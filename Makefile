@@ -10,7 +10,8 @@ BIN_DIR = ./bin
 		ft_strcpy.s
 
 SRC =	ft_strlen.s		\
-		ft_strcpy.s
+		ft_strcpy.s		\
+		ft_strcmp.s
 
 SRCS = $(patsubst %.s, ${SRC_DIR}/%.s, ${SRC})
 OBJS = $(patsubst %.s, ${OBJ_DIR}/%.o, ${SRC})

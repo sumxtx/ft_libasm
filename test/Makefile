@@ -1,40 +1,55 @@
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -MP -MMD
 
 SRC_DIR = ./src
 OBJ_DIR = ./obj
 BIN_DIR = ./bin
 INC_DIR = ./inc
 
-LIBFTASM = ../bin/libasm.a
+SRC = 	test_strcpy.c	\
+		text_strcmp.c	\
+		test_strlen.c
 
-all:	${BIN_DIR}/test_strlen ${BIN_DIR}/test_strcpy
+DEPS = $(patsubst %.c, ${OBJ_DIR}/%.d, ${SRC})
+
+LIBASM = ../bin/libasm.a
+
+FOLDERS = ${OBJ_DIR} ${BIN_DIR}
+
+all: 	${FOLDERS}	\
+		${BIN_DIR}/test_strlen \
+		${BIN_DIR}/test_strcpy \
+		${BIN_DIR}/test_strcmp
 
 #Reglas strlen
-${BIN_DIR}/test_strlen : ${OBJ_DIR}/test_strlen.o ${LIBFTASM} makedirs 
-	cc ${CFLAGS} -o $@ $< ${LIBFTASM}
+${BIN_DIR}/test_strlen :  ${OBJ_DIR}/test_strlen.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_strlen.o ${LIBASM}
 
 ${OBJ_DIR}/test_strlen.o: ${SRC_DIR}/test_strlen.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
 
 #Reglas strcpy
-${BIN_DIR}/test_strcpy : ${OBJ_DIR}/test_strcpy.o ${LIBFTASM} makedirs 
-	cc ${CFLAGS} -o $@ $< ${LIBFTASM}
+${BIN_DIR}/test_strcpy : ${OBJ_DIR}/test_strcpy.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_strcpy.o ${LIBASM}
 
 ${OBJ_DIR}/test_strcpy.o: ${SRC_DIR}/test_strcpy.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
 
+#Reglas strcmp
+${BIN_DIR}/test_strcmp : ${OBJ_DIR}/test_strcmp.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_strcmp.o ${LIBASM}
 
-makedirs: ${OBJ_DIR} ${BIN_DIR}
+${OBJ_DIR}/test_strcmp.o: ${SRC_DIR}/test_strcmp.c Makefile
+	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
 
-${LIBFTASM}:
+${LIBASM}:
 	make --no-print-directory all -C ../
 
 ${OBJ_DIR}:
-	@mkdir -p ${OBJ_DIR}
+	mkdir -p ${OBJ_DIR}
 
 ${BIN_DIR}:
-	@mkdir -p ${BIN_DIR}
+	mkdir -p ${BIN_DIR}
 
 clean:
 	@rm -rf ${OBJ_DIR}
@@ -44,4 +59,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re makedirs
+-include ${DEPS}
+
+.PHONY: all clean fclean re
