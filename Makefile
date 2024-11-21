@@ -6,19 +6,22 @@ SRC_DIR = ./src
 OBJ_DIR = ./obj
 BIN_DIR = ./bin
 
+
+FOLDERS = ${BIN_DIR} ${OBJ_DIR}
 #SRC =	ft_strlen.s		\
 		ft_strcpy.s
 
 SRC =	ft_strlen.s		\
 		ft_strcpy.s		\
-		ft_strcmp.s
+		ft_strcmp.s		\
+		ft_write.s
 
 SRCS = $(patsubst %.s, ${SRC_DIR}/%.s, ${SRC})
 OBJS = $(patsubst %.s, ${OBJ_DIR}/%.o, ${SRC})
 
 all:	${BIN_DIR}/${NAME}
 
-${BIN_DIR}/${NAME}: makedirs ${OBJS}
+${BIN_DIR}/${NAME}: ${FOLDERS} ${OBJS}
 	ar rcs -o ${BIN_DIR}/${NAME} ${OBJS}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.s Makefile
@@ -31,8 +34,6 @@ fclean: clean
 	@rm -rf ${BIN_DIR}
 
 re: fclean
-
-makedirs: ${BIN_DIR} ${OBJ_DIR}
 
 ${BIN_DIR}:
 	@mkdir -p ${BIN_DIR}

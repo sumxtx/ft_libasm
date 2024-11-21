@@ -1,7 +1,8 @@
-extern _errno_location
+global ft_write
+extern __errno_location
+
 ; extern ___errno
 section     .text
-global ft_write
 
 ;Hemos de llamar syscalls y para ellos tenemos que:
 ;   Poner en eax el número de la syscall
@@ -26,9 +27,9 @@ global ft_write
 ft_write:
 
 ; Pre-subrutina
-	MOV	rax, 1				; En linux write es la system call 1.
 	
 ; Subrutina
+	MOV		rax, 1				; En linux write es la system call 1.
 	SYSCALL
 	TEST	rax, rax 		; Pone el flag SF a 1 si rax es negativo   (test coloca en SF el bit de máximo peso) y como es complemento a 2, es el bit de signo.
 	JS		error			; Salta si el bit de signo está marcado ( = 1)
@@ -37,8 +38,8 @@ ft_write:
 error:
 	NEG		rax					;Obtenemos el valor absoluto del retorno del syscall 
 	MOV		rdi, rax			;El valor de rax se lo pasamos como primer parámetro de la funcion externa _errno_location
-	CALL	_errno_location		;Esta funcion nos devuelve en RAX la direccion de memoria donde está la variable errno.
-	MOV		[rax], rdi			;Movemos el valor de rdi a errno (variable de memoria)
+	CALL	__errno_location	;Esta funcion nos devuelve en RAX la direccion de memoria donde está la variable errno.
+	MOV		[rax], rdi			;Movemos el valor de rdi a errno (variable de memoria); vigila que errno es de 16 bits
 	MOV		rax, -1				;Movemos -1 a rax (lo que devolveremos al user)
 
 ; Post-subrutina.
