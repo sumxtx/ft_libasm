@@ -1,4 +1,5 @@
 ; Compara dos strings que le pasamos por parámetros tal como hace man strcmp.
+section	.text
 global ft_strcmp
 
 ft_strcmp:

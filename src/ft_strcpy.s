@@ -1,3 +1,4 @@
+section	.text
 global	ft_strcpy
 
 ;Recuerda... el primer argumento viene en rdi y el segundo en rsi.
