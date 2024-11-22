@@ -46,11 +46,10 @@ ${OBJ_DIR}/test_strcmp.o: ${SRC_DIR}/test_strcmp.c Makefile
 
 #Reglas write
 ${BIN_DIR}/test_write : ${OBJ_DIR}/test_write.o ${LIBASM}
-	cc ${CFLAGS} -z execstack -no-pie -o $@ ${OBJ_DIR}/test_write.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_write.o ${LIBASM}
 
 ${OBJ_DIR}/test_write.o: ${SRC_DIR}/test_write.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR}  -o $@ -c $<
-
 
 ${LIBASM}:
 	make --no-print-directory all -C ../

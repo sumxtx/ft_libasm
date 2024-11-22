@@ -1,3 +1,5 @@
+default rel
+;https://stackoverflow.com/questions/52126328/cant-call-c-standard-library-function-on-64-bit-linux-from-assembly-yasm-code/52131094#52131094
 global ft_write
 extern __errno_location
 
@@ -38,7 +40,14 @@ ft_write:
 error:
 	NEG		rax					;Obtenemos el valor absoluto del retorno del syscall 
 	MOV		rdi, rax			;El valor de rax se lo pasamos como primer parámetro de la funcion externa _errno_location
-	CALL	__errno_location	;Esta funcion nos devuelve en RAX la direccion de memoria donde está la variable errno.
+	CALL	[rel __errno_location wrt ..got]	;Esta funcion nos devuelve en RAX la direccion de memoria donde está la variable errno.
+;Referring to an external or global symbol using wrt ..got causes the linker to build an entry in the GOT containing the address of the symbol, 
+;and the reference gives the distance from the beginning of the GOT to the entry; so you can add on the address of the GOT, load from the resulting 
+;address, and end up with the address of the symbol. 
+;Traduccion
+;	hay que indicar que el tipo de direcciones es relativo y especificar wrt got para que el ensamblador ponga la dirección del simbolo externo
+;	en la tabla de simbolos para que cuando calcule la @ de memoria, la obtenga bien.
+;http://www.posix.nl/linuxassembly/nasmdochtml/nasmdoc6.html#section-6.5.2 
 	MOV		[rax], rdi			;Movemos el valor de rdi a errno (variable de memoria); vigila que errno es de 16 bits
 	MOV		rax, -1				;Movemos -1 a rax (lo que devolveremos al user)
 

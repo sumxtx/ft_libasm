@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:07 by gabriel           #+#    #+#             */
-/*   Updated: 2024/11/21 20:34:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2024/11/22 21:29:00 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,38 @@ int main(void)
 		int		ret;
 
 		len = strlen(t);
-		ret = write(STDOUT_FILENO, t, len);
-		printf("write res: %d\n", ret);
-		ret = ft_write(STDOUT_FILENO,t, len);
-		printf("ft_write res: %d\n", ret);
+		
+		{
+			ret = write(STDOUT_FILENO, t, len);
+			printf("write res: %d\n", ret);
+			ret = ft_write(STDOUT_FILENO,t, len);
+			printf("ft_write res: %d\n", ret);
+			printf("\n");
+		}
+		{
+			ret = write(-1, t, len);
+			printf("write res: %d errno %d \n", ret, errno);
+			ret = ft_write(-1,t, len);
+			printf("ft_write res: %d errno %d \n", ret, errno);
+			printf("\n");
+		}
+		{
+			ret = write(400, t, len);
+			printf("write res: %d errno %d \n", ret, errno);
+			ret = ft_write(400,t, len);
+			printf("ft_write res: %d errno %d \n", ret, errno);
+			printf("\n");
+		}
+		{
+			char t2[] = "";
+			ret = write(STDOUT_FILENO, t2, 0);
+			printf("write res: %d errno %d \n", ret, errno);
+			ret = ft_write(STDOUT_FILENO,t2, 0);
+			printf("ft_write res: %d errno %d \n", ret, errno);
+			printf("\n");
+		}
+
+
 	}
 	return (0);
 }
