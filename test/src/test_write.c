@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:07 by gabriel           #+#    #+#             */
-/*   Updated: 2024/11/22 21:29:00 by gabriel          ###   ########.fr       */
+/*   Updated: 2024/11/22 22:32:36 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,29 @@ int main(void)
 			printf("\n");
 		}
 		{
+			errno = 0;
 			ret = write(-1, t, len);
 			printf("write res: %d errno %d \n", ret, errno);
+			errno = 0;
 			ret = ft_write(-1,t, len);
 			printf("ft_write res: %d errno %d \n", ret, errno);
 			printf("\n");
 		}
 		{
+			errno = 0;
 			ret = write(400, t, len);
 			printf("write res: %d errno %d \n", ret, errno);
+			errno = 0;
 			ret = ft_write(400,t, len);
 			printf("ft_write res: %d errno %d \n", ret, errno);
 			printf("\n");
 		}
 		{
+			errno = 0;
 			char t2[] = "";
 			ret = write(STDOUT_FILENO, t2, 0);
 			printf("write res: %d errno %d \n", ret, errno);
+			errno = 0;
 			ret = ft_write(STDOUT_FILENO,t2, 0);
 			printf("ft_write res: %d errno %d \n", ret, errno);
 			printf("\n");
