@@ -9,7 +9,8 @@ INC_DIR = ./inc
 SRC = 	test_strcpy.c	\
 		text_strcmp.c	\
 		test_strlen.c	\
-		test_write.c
+		test_write.c	\
+		test_read.c
 
 DEPS = $(patsubst %.c, ${OBJ_DIR}/%.d, ${SRC})
 
@@ -21,7 +22,8 @@ all: 	${FOLDERS}	\
 		${BIN_DIR}/test_strlen	\
 		${BIN_DIR}/test_strcpy	\
 		${BIN_DIR}/test_strcmp	\
-		${BIN_DIR}/test_write
+		${BIN_DIR}/test_write	\
+		${BIN_DIR}/test_read
 
 #Reglas strlen
 ${BIN_DIR}/test_strlen :  ${OBJ_DIR}/test_strlen.o ${LIBASM}
@@ -50,6 +52,14 @@ ${BIN_DIR}/test_write : ${OBJ_DIR}/test_write.o ${LIBASM}
 
 ${OBJ_DIR}/test_write.o: ${SRC_DIR}/test_write.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR}  -o $@ -c $<
+
+#Reglas read
+${BIN_DIR}/test_read : ${OBJ_DIR}/test_read.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_read.o ${LIBASM}
+
+${OBJ_DIR}/test_read.o: ${SRC_DIR}/test_read.c Makefile
+	cc ${CFLAGS} -I ${INC_DIR}  -o $@ -c $<
+
 
 ${LIBASM}:
 	make --no-print-directory all -C ../
