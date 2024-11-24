@@ -12,6 +12,7 @@ FOLDERS = ${BIN_DIR} ${OBJ_DIR}
 		ft_strcpy.s
 
 SRC =	ft_read.s		\
+		ft_strdup.s		\
 		ft_strlen.s		\
 		ft_strcpy.s		\
 		ft_strcmp.s		\

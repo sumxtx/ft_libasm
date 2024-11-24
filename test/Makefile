@@ -1,5 +1,5 @@
 
-CFLAGS = -Wall -Werror -Wextra -MP -MMD
+CFLAGS = -Wall -Werror -Wextra -MP -MMD -fsanitize=address -fsanitize=leak
 
 SRC_DIR = ./src
 OBJ_DIR = ./obj
@@ -19,6 +19,7 @@ LIBASM = ../bin/libasm.a
 FOLDERS = ${OBJ_DIR} ${BIN_DIR}
 
 all: 	${FOLDERS}	\
+		${BIN_DIR}/test_strdup	\
 		${BIN_DIR}/test_strlen	\
 		${BIN_DIR}/test_strcpy	\
 		${BIN_DIR}/test_strcmp	\
@@ -60,6 +61,12 @@ ${BIN_DIR}/test_read : ${OBJ_DIR}/test_read.o ${LIBASM}
 ${OBJ_DIR}/test_read.o: ${SRC_DIR}/test_read.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR}  -o $@ -c $<
 
+#Reglas strdup
+${BIN_DIR}/test_strdup : ${OBJ_DIR}/test_strdup.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_strdup.o ${LIBASM}
+
+${OBJ_DIR}/test_strdup.o: ${SRC_DIR}/test_strdup.c Makefile
+	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
 
 ${LIBASM}:
 	make --no-print-directory all -C ../
