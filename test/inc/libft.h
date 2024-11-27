@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 20:37:22 by greus-ro          #+#    #+#             */
-/*   Updated: 2024/11/22 22:10:26 by gabriel          ###   ########.fr       */
+/*   Updated: 2024/11/27 19:59:16 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		ft_isupper(int c);
 	Conversions
 */
 int		ft_atoi(const char *nbr);
+int		ft_atoi_base(const char *str, int str_base);
 long	ft_atol(const char *nbr);
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);

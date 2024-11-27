@@ -19,6 +19,7 @@ LIBASM = ../bin/libasm.a
 FOLDERS = ${OBJ_DIR} ${BIN_DIR}
 
 all: 	${FOLDERS}	\
+		${BIN_DIR}/test_ft_atoi_base	\
 		${BIN_DIR}/test_strdup	\
 		${BIN_DIR}/test_strlen	\
 		${BIN_DIR}/test_strcpy	\
@@ -66,6 +67,13 @@ ${BIN_DIR}/test_strdup : ${OBJ_DIR}/test_strdup.o ${LIBASM}
 	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_strdup.o ${LIBASM}
 
 ${OBJ_DIR}/test_strdup.o: ${SRC_DIR}/test_strdup.c Makefile
+	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
+
+#Reglas ft_atoi_base
+${BIN_DIR}/test_ft_atoi_base : ${OBJ_DIR}/test_ft_atoi_base.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_ft_atoi_base.o ${LIBASM}
+
+${OBJ_DIR}/test_ft_atoi_base.o: ${SRC_DIR}/test_ft_atoi_base.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
 
 ${LIBASM}:

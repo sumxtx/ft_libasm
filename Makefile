@@ -8,10 +8,9 @@ BIN_DIR = ./bin
 
 
 FOLDERS = ${BIN_DIR} ${OBJ_DIR}
-#SRC =	ft_strlen.s		\
-		ft_strcpy.s
 
-SRC =	ft_read.s		\
+SRC =	ft_atoi_base.s	\
+		ft_read.s		\
 		ft_strdup.s		\
 		ft_strlen.s		\
 		ft_strcpy.s		\

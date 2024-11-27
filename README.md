@@ -21,3 +21,6 @@ SysCalls
 	https://filippo.io/linux-syscall-table/
 	
 https://harm-smits.github.io/42docs/projects/libasm
+
+Multiplicacion
+	http://www.c-jump.com/CIS77/MLabs/M11arithmetic/M11_0070_imul_example.htm
