@@ -11,6 +11,7 @@ FOLDERS = ${BIN_DIR} ${OBJ_DIR}
 
 SRC =	ft_atoi_base.s			\
 		ft_list_push_front.s	\
+		ft_list_size.s			\
 		ft_read.s				\
 		ft_strdup.s				\
 		ft_strlen.s				\
