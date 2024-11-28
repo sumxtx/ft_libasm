@@ -24,3 +24,8 @@ https://harm-smits.github.io/42docs/projects/libasm
 
 Multiplicacion
 	http://www.c-jump.com/CIS77/MLabs/M11arithmetic/M11_0070_imul_example.htm
+
+	
+GOT: Global Offset Tables, tabla 
+	https://en.wikipedia.org/wiki/Global_Offset_Table
+	Tabla donde mapea los símbolos a sus memorias de memoria absolutas.

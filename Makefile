@@ -9,12 +9,13 @@ BIN_DIR = ./bin
 
 FOLDERS = ${BIN_DIR} ${OBJ_DIR}
 
-SRC =	ft_atoi_base.s	\
-		ft_read.s		\
-		ft_strdup.s		\
-		ft_strlen.s		\
-		ft_strcpy.s		\
-		ft_strcmp.s		\
+SRC =	ft_atoi_base.s			\
+		ft_list_push_front.s	\
+		ft_read.s				\
+		ft_strdup.s				\
+		ft_strlen.s				\
+		ft_strcpy.s				\
+		ft_strcmp.s				\
 		ft_write.s
 
 SRCS = $(patsubst %.s, ${SRC_DIR}/%.s, ${SRC})

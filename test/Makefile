@@ -6,10 +6,12 @@ OBJ_DIR = ./obj
 BIN_DIR = ./bin
 INC_DIR = ./inc
 
-SRC = 	test_strcpy.c	\
-		text_strcmp.c	\
-		test_strlen.c	\
-		test_write.c	\
+SRC = 	test_ft_atoi_base.c			\
+		test_ft_list_push_front.c 	\
+		test_strcpy.c				\
+		text_strcmp.c				\
+		test_strlen.c				\
+		test_write.c				\
 		test_read.c
 
 DEPS = $(patsubst %.c, ${OBJ_DIR}/%.d, ${SRC})
@@ -20,6 +22,7 @@ FOLDERS = ${OBJ_DIR} ${BIN_DIR}
 
 all: 	${FOLDERS}	\
 		${BIN_DIR}/test_ft_atoi_base	\
+		${BIN_DIR}/test_ft_list_push_front \
 		${BIN_DIR}/test_strdup	\
 		${BIN_DIR}/test_strlen	\
 		${BIN_DIR}/test_strcpy	\
@@ -75,6 +78,14 @@ ${BIN_DIR}/test_ft_atoi_base : ${OBJ_DIR}/test_ft_atoi_base.o ${LIBASM}
 
 ${OBJ_DIR}/test_ft_atoi_base.o: ${SRC_DIR}/test_ft_atoi_base.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
+
+#Reglas ft_list_push_front
+${BIN_DIR}/test_ft_list_push_front : ${OBJ_DIR}/test_ft_list_push_front.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_ft_list_push_front.o ${LIBASM}
+
+${OBJ_DIR}/test_ft_list_push_front.o: ${SRC_DIR}/test_ft_list_push_front.c Makefile
+	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
+
 
 ${LIBASM}:
 	make --no-print-directory all -C ../
