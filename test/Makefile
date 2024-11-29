@@ -9,6 +9,7 @@ INC_DIR = ./inc
 SRC = 	test_ft_atoi_base.c			\
 		test_ft_list_push_front.c 	\
 		test_ft_list_size.c		 	\
+		test_ft_list_sort.c		 	\
 		test_strcpy.c				\
 		text_strcmp.c				\
 		test_strlen.c				\
@@ -25,6 +26,7 @@ all: 	${FOLDERS}	\
 		${BIN_DIR}/test_ft_atoi_base	\
 		${BIN_DIR}/test_ft_list_push_front \
 		${BIN_DIR}/test_ft_list_size \
+		${BIN_DIR}/test_ft_list_sort \
 		${BIN_DIR}/test_strdup	\
 		${BIN_DIR}/test_strlen	\
 		${BIN_DIR}/test_strcpy	\
@@ -93,6 +95,13 @@ ${BIN_DIR}/test_ft_list_size : ${OBJ_DIR}/test_ft_list_size.o ${LIBASM}
 	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_ft_list_size.o ${LIBASM}
 
 ${OBJ_DIR}/test_ft_list_size.o: ${SRC_DIR}/test_ft_list_size.c Makefile
+	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
+
+#Reglas ft_list_sort
+${BIN_DIR}/test_ft_list_sort : ${OBJ_DIR}/test_ft_list_sort.o ${LIBASM}
+	cc ${CFLAGS} -z execstack -o $@ ${OBJ_DIR}/test_ft_list_sort.o ${LIBASM}
+
+${OBJ_DIR}/test_ft_list_sort.o: ${SRC_DIR}/test_ft_list_sort.c Makefile
 	cc ${CFLAGS} -I ${INC_DIR} -o $@ -c $<
 
 

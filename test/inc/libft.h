@@ -6,7 +6,7 @@
 /*   By: greus-ro <greus-ro@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 20:37:22 by greus-ro          #+#    #+#             */
-/*   Updated: 2024/11/28 14:41:34 by greus-ro         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:17:06 by greus-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_list_push_front(t_list **lst, t_list *new);
 int		ft_list_size(t_list *lst);
+void	ft_list_sort(t_list **begin_list, int (*cmp)());
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
