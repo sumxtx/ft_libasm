@@ -29,7 +29,7 @@ ${BIN_DIR}/${NAME}: ${FOLDERS} ${OBJS}
 	ar rcs -o ${BIN_DIR}/${NAME} ${OBJS}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.s Makefile
-	nasm -f ${PLATFORM} -o $@ $<
+	nasm -g -f ${PLATFORM} -o $@ $<
 
 clean:
 	@rm -rf ${OBJ_DIR}

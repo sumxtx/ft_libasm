@@ -1,5 +1,7 @@
 
-CFLAGS = -Wall -Werror -Wextra -MP -MMD -fsanitize=address -fsanitize=leak
+#CFLAGS = -Wall -Werror -Wextra -MP -MMD -fsanitize=address -fsanitize=leak
+
+CFLAGS = -Wall -Werror -Wextra -MP -MMD -g
 
 SRC_DIR = ./src
 OBJ_DIR = ./obj
