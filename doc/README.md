@@ -17,9 +17,9 @@
 - Reversing and Debugging
 - Further Reading
     - x64_CheatSheet
+    - 42Docs
     - Calling Conventions 
     - Callee Saved Registers
-    - 42Docs
 
 ## Registers
 
@@ -346,12 +346,18 @@ vim gdb_commands.txt
 gdb -x gdb_commands.txt ./binarie
 ```
 ## Further Reading
-###  x64_CheatSheet
+####  x64_CheatSheet
 - [Chuleta de instrucciones](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
 
-### "42 Docs"
+#### "42 Docs"
 In quotes because 42 has no Docs really, it was made by another student. Kudos to him
 - [Libasm "42Docs"](https://harm-smits.github.io/42docs/projects/libasm)
 
-- [Calling Conventions](https://en.wikipedia.org/wiki/X86_calling_conventions) [Callee Saved registers](http://liujunming.top/2022/01/11/What-is-callee-saved-registers/)
-- [Multiplicacion](http://www.c-jump.com/CIS77/MLabs/M11arithmetic/M11_0070_imul_example.htm) con Assembly
+#### Calling Conventions 
+[Calling Conventions](https://en.wikipedia.org/wiki/X86_calling_conventions) 
+
+#### Callee Saved Registers
+[Callee Saved registers](http://liujunming.top/2022/01/11/What-is-callee-saved-registers/)
+
+#### Multiplication
+- [Multiplicacion](http://www.c-jump.com/CIS77/MLabs/M11arithmetic/M11_0070_imul_example.htm)
