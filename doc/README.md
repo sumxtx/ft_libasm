@@ -1,9 +1,30 @@
-
-# Cheat Sheet 
+# Index
+- Registers
+    - General Purpose Registers
+    - Segment Registers
+- Flags
+- Hello World
+- Call Conventions
+    - C Caller Convention
+    - Passing Parameters to subroutine
+- Variables
+    - Notation for Defining Variables
+    - Declaring an Initializing Constant Data
+    - Declaring an Initializing Variable Data
+    - Reserving Bytes in .bss Section
+- Sections Offsets
+- Syscalls
+- Reversing and Debugging
+- Further Reading
+    - x64_CheatSheet
+    - Calling Conventions 
+    - Callee Saved Registers
+    - 42Docs
 
 ## Registers
 
 ### General Purpose Registers
+These registers may be used for general purpose. Although some of them have special meaning to be aware of. As the RSP for example, in case of being overwriten we lost acces to the Stack.
 |Register|Usage|
 |:-----:|:-------|
 | RAX   | First Parameter of calls, Return Values...  |
@@ -257,6 +278,16 @@ indexVec: db sizeVec;
 - Reserving 2 quad word
 > var_name: resq 2
 
+## Sections Offset 
+- [GOT: Global Offset Tables](https://en.wikipedia.org/wiki/Global_Offset_Table)
+
+## Syscalls
+
+- [Assembly System Calls](https://www.tutorialspoint.com/assembly_programming/assembly_system_calls.htm)
+- [Linux System Call Tables for X86_64](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
+- [Linux Syscalls](https://lsi.vc.ehu.eus/pablogn/docencia/ISO/2%20Llamadas%20al%20Sistema,%20Kernel/X86%20Linux%20Syscall.pdf)
+- [Linux Syscalls table](https://filippo.io/linux-syscall-table/)
+
 ## Reversing and Debugging
 Getting some info on the binarie, elf dump, memory offsets, etc..
 > man readelf
@@ -314,3 +345,13 @@ vim gdb_commands.txt
 ```
 gdb -x gdb_commands.txt ./binarie
 ```
+## Further Reading
+###  x64_CheatSheet
+- [Chuleta de instrucciones](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
+
+### "42 Docs"
+In quotes because 42 has no Docs really, it was made by another student. Kudos to him
+- [Libasm "42Docs"](https://harm-smits.github.io/42docs/projects/libasm)
+
+- [Calling Conventions](https://en.wikipedia.org/wiki/X86_calling_conventions) [Callee Saved registers](http://liujunming.top/2022/01/11/What-is-callee-saved-registers/)
+- [Multiplicacion](http://www.c-jump.com/CIS77/MLabs/M11arithmetic/M11_0070_imul_example.htm) con Assembly
