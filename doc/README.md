@@ -1,25 +1,27 @@
 # Index
-- Registers
-    - General Purpose Registers
-    - Segment Registers
-- Flags
-- Hello World
-- Call Conventions
-    - C Caller Convention
-    - Passing Parameters to subroutine
-- Variables
-    - Notation for Defining Variables
-    - Declaring an Initializing Constant Data
-    - Declaring an Initializing Variable Data
-    - Reserving Bytes in .bss Section
-- Sections Offsets
-- Syscalls
-- Reversing and Debugging
-- Further Reading
-    - x64_CheatSheet
-    - 42Docs
-    - Calling Conventions 
-    - Callee Saved Registers
+- MASM/MSVC (Microsoft Windows Assembler / MicroSoft Visual Code) Conventions
+- Linux/Unix Conventions
+    - Registers
+        - General Purpose Registers
+        - Segment Registers
+    - Flags
+    - Hello World
+    - Call Conventions
+        - C Caller Convention
+        - Passing Parameters to subroutine
+    - Variables
+        - Notation for Defining Variables
+        - Declaring an Initializing Constant Data
+        - Declaring an Initializing Variable Data
+        - Reserving Bytes in .bss Section
+    - Sections Offsets
+    - Syscalls
+    - Reversing and Debugging
+    - Further Reading
+        - x64_CheatSheet
+        - 42Docs
+        - Calling Conventions 
+        - Callee Saved Registers
 
 ## Registers
 
